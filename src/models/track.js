@@ -7,28 +7,29 @@ const trackSchema = new mongoose.Schema({
         trim: true
     },
     artists: [{
-        artist: {
-            type: String,
-            required: true,
-            trim: true
+        type: String,
+        properties: {
+            name: {
+                type: String
+            }
         }
     }],
-    MinuteDuration: {
-        type: Number,
-        required: true
-    },
-    secondDuration: {
+    Duration: {
         type: Number,
         required: true
     },
     url: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     imageURL: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     }
 })
 
 const Track = mongoose.model('Track', trackSchema)
+
+module.exports = Track

@@ -1,5 +1,11 @@
 const express = require('express')
 
+require('./db/mongoose')
+
+
+const trackRouter = require('./routers/track-routers')
+
+
 const app = express()
 
 app.use((req, res, next) => {
@@ -14,6 +20,9 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json())
+
+app.use(trackRouter)
+
 
 const port = process.env.PORT || 8000;
 
