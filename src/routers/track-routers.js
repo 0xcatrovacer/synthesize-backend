@@ -1,6 +1,6 @@
 const express = require('express')
 
-const Track = require('../models/track')
+const Track = require('../models/Track')
 
 const router = new express.Router()
 
