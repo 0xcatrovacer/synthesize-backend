@@ -11,7 +11,7 @@ async function oauthpipeline(req, next) {
             return
         }
 
-        const userData = await fetch('https://www.googleapis.com/oauth2/v3/userinfo?access_token=' + access_token)
+        let userData = await fetch('https://www.googleapis.com/oauth2/v3/userinfo?access_token=' + access_token)
         userData = await userData.json()
         if (!userData) {
             const err = new Error('Authentication failed, try again')

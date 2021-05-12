@@ -1,5 +1,6 @@
+require('../middlewares/OauthSetup');
 const User = require('../models/User');
-const verify = require('../verify');
+const verify = require('../middlewares/verify');
 
 const router = require('express').Router();
 
