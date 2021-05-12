@@ -1,7 +1,7 @@
 const express = require('express')
 const oauthpipeline = require('../middlewares/OauthSetup')
 
-const router = new express.Router()
+const router = express.Router()
 
 const User = require('../models/User')
 
@@ -26,15 +26,15 @@ router.post('/oauthlogin', async (req, res, next) => {
                 next(currentUser)
             } else {
                 new User({
-                    username: name,
-                    googleId: sub
+                    googleId: sub,
+                    username: name
                 }).save().then((newUser) => {
                     next(newUser);
                 })
             }
         })
 
-        res.json({ ok: 1 });
+        res.json({ name, googleId: sub, ok: 1 });
 
     } catch (e) {
         console.log(e)
