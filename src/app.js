@@ -3,6 +3,7 @@ const express = require('express')
 require('./db/mongoose')
 
 
+const userRouter = require('./routers/user-routers')
 const trackRouter = require('./routers/track-routers')
 
 
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 
+app.use(userRouter)
 app.use(trackRouter)
 
 
