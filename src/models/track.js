@@ -14,7 +14,7 @@ const trackSchema = new mongoose.Schema({
             }
         }
     }],
-    Duration: {
+    duration: {
         type: Number,
         required: true
     },
