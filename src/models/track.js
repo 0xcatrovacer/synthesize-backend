@@ -10,13 +10,19 @@ const trackSchema = new mongoose.Schema({
         type: String,
         properties: {
             name: {
-                type: String
+                type: String,
+                trim: true
             }
         }
     }],
     duration: {
         type: Number,
         required: true
+    },
+    genre: {
+        type: String,
+        required: true,
+        trim: true
     },
     url: {
         type: String,
