@@ -78,20 +78,20 @@ router.get('/tracks', async (req, res) => {
 //     }
 // })
 
-// router.post('/search', async (req, res) => {
-//     try {
-//         const searchInput = req.body.searchInput || ''
-//         const tracks = await Track.find()
+router.post('/search', async (req, res) => {
+    try {
+        const searchInput = req.body.searchInput || ''
+        const tracks = await Track.find()
 
-//         const result = getTracks(searchInput, tracks)
+        const result = getTracks(searchInput, tracks)
 
-//         const searchresults = [result[0], result[1], result[2], result[3], result[4]]
+        const searchresults = [result[0], result[1], result[2], result[3], result[4]]
 
-//         res.status(200).send(searchresults)
-//     } catch (e) {
-//         res.status(500).send(e.message)
-//     }
-// })
+        res.status(200).send(searchresults)
+    } catch (e) {
+        res.status(500).send(e.message)
+    }
+})
 
 
 
