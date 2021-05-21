@@ -3,7 +3,7 @@ const express = require('express')
 require('./db/mongoose')
 
 
-const userRouter = require('./routers/user-routers')
+const authRouter = require('./routers/auth-routers')
 const mainRouter = require('./routers/main-routers')
 const trackRouter = require('./routers/track-routers')
 
@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 
-app.use('/auth', userRouter)
+app.use('/auth', authRouter)
 app.use('/main', mainRouter)
 app.use(trackRouter)
 
