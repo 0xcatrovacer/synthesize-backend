@@ -2,7 +2,7 @@ const express = require('express')
 const verify = require('../middlewares/verify')
 
 const Track = require('../models/Track')
-const getTracks = require('../utilities/searchAlgorithm.js')
+const getTracks = require('../utilities/trackSearchAlgorithm.js')
 
 const router = express.Router()
 
@@ -24,6 +24,19 @@ router.get('/tracks', async (req, res) => {
     try {
         const tracks = await Track.find();
         res.status(200).send(tracks);
+    } catch (e) {
+        res.status(500).send(e.message)
+    }
+})
+
+// Get track by genre
+router.post('/genretracks', async (req, res) => {
+
+    const genre = req.body.genre;
+
+    try {
+        const genretracks = await Track.find({ genre })
+        res.status(200).send(genretracks)
     } catch (e) {
         res.status(500).send(e.message)
     }
@@ -78,20 +91,20 @@ router.get('/tracks', async (req, res) => {
 //     }
 // })
 
-// router.post('/search', async (req, res) => {
-//     try {
-//         const searchInput = req.body.searchInput || ''
-//         const tracks = await Track.find()
+router.post('/search', async (req, res) => {
+    try {
+        const searchInput = req.body.searchInput || ''
+        const tracks = await Track.find()
 
-//         const result = getTracks(searchInput, tracks)
+        const trackresult = getTracks(searchInput, tracks)
 
-//         const searchresults = [result[0], result[1], result[2], result[3], result[4]]
+        const searchresults = [trackresult[0], trackresult[1], trackresult[2], trackresult[3], trackresult[4]]
 
-//         res.status(200).send(searchresults)
-//     } catch (e) {
-//         res.status(500).send(e.message)
-//     }
-// })
+        res.status(200).send(searchresults)
+    } catch (e) {
+        res.status(500).send(e.message)
+    }
+})
 
 
 
