@@ -16,7 +16,7 @@ $ npm install
 Create environment variables:
 
 1. Create directory `config`
-1. Enter file `dev.env` inside directory `config`
+1. Create file `dev.env` inside directory `config`
 1. Enter env variables
 
 ```
